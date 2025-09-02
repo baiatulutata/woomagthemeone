@@ -37,7 +37,7 @@
                         <p class="text-gray-400 text-sm">
                             <?php
                             printf(
-                                esc_html__('© %1$s %2$s. All rights reserved.', 'modern-theme'),
+                                esc_html__('© %1$s %2$s. All rights reserved.', 'woomagone-theme'),
                                 date('Y'),
                                 get_bloginfo('name')
                             );
@@ -49,8 +49,8 @@
                         <p class="text-gray-400 text-sm">
                             <?php
                             printf(
-                                esc_html__('Powered by %1$s', 'modern-theme'),
-                                '<a href="' . esc_url(__('https://wordpress.org/', 'modern-theme')) . '" class="text-gray-300 hover:text-white transition-colors duration-200">WordPress</a>'
+                                esc_html__('Powered by %1$s', 'woomagone-theme'),
+                                '<a href="' . esc_url(__('https://wordpress.org/', 'woomagone-theme')) . '" class="text-gray-300 hover:text-white transition-colors duration-200">WordPress</a>'
                             );
                             ?>
                         </p>
@@ -61,7 +61,7 @@
     </div>
 
     <!-- Back to Top Button -->
-    <button id="back-to-top" class="fixed bottom-8 right-8 bg-primary-600 hover:bg-primary-700 text-white p-3 rounded-full shadow-lg transform translate-y-16 transition-transform duration-300 opacity-0 hover:opacity-100 focus:opacity-100" aria-label="<?php esc_attr_e('Back to top', 'modern-theme'); ?>">
+    <button id="back-to-top" class="fixed bottom-8 right-8 bg-primary-600 hover:bg-primary-700 text-white p-3 rounded-full shadow-lg transform translate-y-16 transition-transform duration-300 opacity-0 hover:opacity-100 focus:opacity-100" aria-label="<?php esc_attr_e('Back to top', 'woomagone-theme'); ?>">
         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
         </svg>

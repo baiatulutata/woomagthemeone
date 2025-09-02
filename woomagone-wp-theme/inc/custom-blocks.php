@@ -12,40 +12,40 @@ if (!defined('ABSPATH')) {
 function woomag_theme_one_register_blocks() {
     // Hero Section Block
     wp_register_script(
-        'modern-hero-block',
+        'woomagone-hero-block',
         get_template_directory_uri() . '/assets/js/blocks/hero-block.js',
         array('wp-blocks', 'wp-element', 'wp-editor'),
         filemtime(get_template_directory() . '/assets/js/blocks/hero-block.js')
     );
 
-    register_block_type('modern-theme/hero', array(
-        'editor_script' => 'modern-hero-block',
+    register_block_type('woomagone-theme/hero', array(
+        'editor_script' => 'woomagone-hero-block',
         'render_callback' => 'woomag_theme_one_hero_block_render',
     ));
 
     // Testimonial Block
     wp_register_script(
-        'modern-testimonial-block',
+        'woomagone-testimonial-block',
         get_template_directory_uri() . '/assets/js/blocks/testimonial-block.js',
         array('wp-blocks', 'wp-element', 'wp-editor'),
         filemtime(get_template_directory() . '/assets/js/blocks/testimonial-block.js')
     );
 
-    register_block_type('modern-theme/testimonial', array(
-        'editor_script' => 'modern-testimonial-block',
+    register_block_type('woomagone-theme/testimonial', array(
+        'editor_script' => 'woomagone-testimonial-block',
         'render_callback' => 'woomag_theme_one_testimonial_block_render',
     ));
 
     // Feature Grid Block
     wp_register_script(
-        'modern-features-block',
+        'woomagone-features-block',
         get_template_directory_uri() . '/assets/js/blocks/features-block.js',
         array('wp-blocks', 'wp-element', 'wp-editor'),
         filemtime(get_template_directory() . '/assets/js/blocks/features-block.js')
     );
 
-    register_block_type('modern-theme/features', array(
-        'editor_script' => 'modern-features-block',
+    register_block_type('woomagone-theme/features', array(
+        'editor_script' => 'woomagone-features-block',
         'render_callback' => 'woomag_theme_one_features_block_render',
     ));
 }
@@ -140,8 +140,8 @@ function woomag_theme_one_block_categories($categories) {
         $categories,
         array(
             array(
-                'slug'  => 'modern-theme',
-                'title' => __('Modern Theme', 'modern-theme'),
+                'slug'  => 'woomagone-theme',
+                'title' => __('Modern Theme', 'woomagone-theme'),
             ),
         )
     );

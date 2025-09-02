@@ -48,7 +48,7 @@
                                             <?php the_content(); ?>
                                         </div>
                                         <?php wp_link_pages(array(
-                                            'before' => '<div class="page-links mt-6"><span class="page-links-title font-medium">' . __('Pages:', 'modern-theme') . '</span>',
+                                            'before' => '<div class="page-links mt-6"><span class="page-links-title font-medium">' . __('Pages:', 'woomagone-theme') . '</span>',
                                             'after'  => '</div>',
                                             'link_before' => '<span class="inline-block px-3 py-1 ml-2 bg-gray-100 rounded hover:bg-primary-600 hover:text-white transition-colors duration-200">',
                                             'link_after'  => '</span>',
@@ -56,7 +56,7 @@
                                     <?php else : ?>
                                         <?php the_excerpt(); ?>
                                         <a href="<?php the_permalink(); ?>" class="read-more inline-block mt-4 text-primary-600 hover:text-primary-700 font-medium transition-colors duration-200">
-                                            <?php _e('Read More', 'modern-theme'); ?> →
+                                            <?php _e('Read More', 'woomagone-theme'); ?> →
                                         </a>
                                     <?php endif; ?>
                                 </div>
@@ -65,7 +65,7 @@
                                     <footer class="entry-footer mt-6 pt-6 border-t border-gray-200">
                                         <?php if (get_the_tags()) : ?>
                                             <div class="tags mb-4">
-                                                <span class="text-sm font-medium text-gray-600 mr-2"><?php _e('Tags:', 'modern-theme'); ?></span>
+                                                <span class="text-sm font-medium text-gray-600 mr-2"><?php _e('Tags:', 'woomagone-theme'); ?></span>
                                                 <?php the_tags('<span class="inline-block px-2 py-1 text-xs bg-gray-100 rounded mr-2 mb-2">', '</span><span class="inline-block px-2 py-1 text-xs bg-gray-100 rounded mr-2 mb-2">', '</span>'); ?>
                                             </div>
                                         <?php endif; ?>
@@ -73,9 +73,9 @@
                                         <?php if (comments_open() || get_comments_number()) : ?>
                                             <div class="comments-link">
                                                 <?php comments_popup_link(
-                                                    __('Leave a Comment', 'modern-theme'),
-                                                    __('1 Comment', 'modern-theme'),
-                                                    __('% Comments', 'modern-theme'),
+                                                    __('Leave a Comment', 'woomagone-theme'),
+                                                    __('1 Comment', 'woomagone-theme'),
+                                                    __('% Comments', 'woomagone-theme'),
                                                     'text-primary-600 hover:text-primary-700 font-medium transition-colors duration-200'
                                                 ); ?>
                                             </div>
@@ -90,9 +90,9 @@
                 <?php
                 // Pagination
                 the_posts_pagination(array(
-                    'prev_text' => __('← Previous', 'modern-theme'),
-                    'next_text' => __('Next →', 'modern-theme'),
-                    'before_page_number' => '<span class="sr-only">' . __('Page', 'modern-theme') . ' </span>',
+                    'prev_text' => __('← Previous', 'woomagone-theme'),
+                    'next_text' => __('Next →', 'woomagone-theme'),
+                    'before_page_number' => '<span class="sr-only">' . __('Page', 'woomagone-theme') . ' </span>',
                     'class' => 'pagination flex justify-center mt-12 space-x-2',
                 ));
                 ?>
@@ -100,12 +100,12 @@
             <?php else : ?>
 
                 <div class="no-posts text-center py-16">
-                    <h1 class="text-2xl font-bold text-gray-900 mb-4"><?php _e('Nothing Found', 'modern-theme'); ?></h1>
+                    <h1 class="text-2xl font-bold text-gray-900 mb-4"><?php _e('Nothing Found', 'woomagone-theme'); ?></h1>
                     <p class="text-gray-600 mb-8">
                         <?php if (is_search()) : ?>
-                            <?php printf(__('Sorry, but nothing matched your search terms. Please try again with some different keywords.', 'modern-theme')); ?>
+                            <?php printf(__('Sorry, but nothing matched your search terms. Please try again with some different keywords.', 'woomagone-theme')); ?>
                         <?php else : ?>
-                            <?php _e('It seems we can\'t find what you\'re looking for. Perhaps searching can help.', 'modern-theme'); ?>
+                            <?php _e('It seems we can\'t find what you\'re looking for. Perhaps searching can help.', 'woomagone-theme'); ?>
                         <?php endif; ?>
                     </p>
                     <?php get_search_form(); ?>

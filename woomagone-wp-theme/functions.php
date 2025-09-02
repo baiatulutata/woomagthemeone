@@ -35,8 +35,8 @@ function woomag_theme_one_setup() {
 
     // Register navigation menus
     register_nav_menus(array(
-        'primary' => __('Primary Menu', 'modern-theme'),
-        'footer'  => __('Footer Menu', 'modern-theme'),
+        'primary' => __('Primary Menu', 'woomagone-theme'),
+        'footer'  => __('Footer Menu', 'woomagone-theme'),
     ));
 }
 add_action('after_setup_theme', 'woomag_theme_one_setup');
@@ -45,7 +45,7 @@ add_action('after_setup_theme', 'woomag_theme_one_setup');
 function woomag_theme_one_scripts() {
     // Enqueue main stylesheet
     wp_enqueue_style(
-        'modern-theme-style',
+        'woomagone-theme-style',
         get_template_directory_uri() . '/assets/css/style.css',
         array(),
         filemtime(get_template_directory() . '/assets/css/style.css') // Cache busting
@@ -53,7 +53,7 @@ function woomag_theme_one_scripts() {
 
     // Enqueue main JavaScript
     wp_enqueue_script(
-        'modern-theme-script',
+        'woomagone-theme-script',
         get_template_directory_uri() . '/assets/js/main.js',
         array(),
         filemtime(get_template_directory() . '/assets/js/main.js'), // Cache busting
@@ -61,7 +61,7 @@ function woomag_theme_one_scripts() {
     );
 
     // Localize script for AJAX
-    wp_localize_script('modern-theme-script', 'woomag_theme_one_ajax', array(
+    wp_localize_script('woomagone-theme-script', 'woomag_theme_one_ajax', array(
         'ajax_url' => admin_url('admin-ajax.php'),
         'nonce'    => wp_create_nonce('woomag_theme_one_nonce')
     ));
@@ -76,9 +76,9 @@ add_action('wp_enqueue_scripts', 'woomag_theme_one_scripts');
 // Register widget areas
 function woomag_theme_one_widgets_init() {
     register_sidebar(array(
-        'name'          => __('Footer Widgets', 'modern-theme'),
+        'name'          => __('Footer Widgets', 'woomagone-theme'),
         'id'            => 'footer-widgets',
-        'description'   => __('Add widgets here to appear in your footer.', 'modern-theme'),
+        'description'   => __('Add widgets here to appear in your footer.', 'woomagone-theme'),
         'before_widget' => '<div id="%1$s" class="widget %2$s mb-8">',
         'after_widget'  => '</div>',
         'before_title'  => '<h3 class="widget-title text-lg font-semibold mb-4">',
@@ -139,7 +139,7 @@ function woomag_theme_one_breadcrumb() {
     if (is_front_page()) return;
 
     echo '<nav class="breadcrumb container mx-auto px-4 py-4" aria-label="Breadcrumb">';
-    echo '<a href="' . home_url('/') . '" class="hover:text-primary-600">' . __('Home', 'modern-theme') . '</a>';
+    echo '<a href="' . home_url('/') . '" class="hover:text-primary-600">' . __('Home', 'woomagone-theme') . '</a>';
     echo '<span class="breadcrumb-separator mx-2">/</span>';
 
     if (is_category() || is_single()) {
@@ -166,13 +166,13 @@ function woomag_theme_one_breadcrumb() {
         }
         echo '<span class="text-gray-500">' . get_the_title() . '</span>';
     } elseif (is_search()) {
-        echo '<span class="text-gray-500">' . __('Search Results for: ', 'modern-theme') . get_search_query() . '</span>';
+        echo '<span class="text-gray-500">' . __('Search Results for: ', 'woomagone-theme') . get_search_query() . '</span>';
     } elseif (is_tag()) {
         echo '<span class="text-gray-500">' . single_tag_title('', false) . '</span>';
     } elseif (is_archive()) {
         echo '<span class="text-gray-500">' . get_the_archive_title() . '</span>';
     } elseif (is_404()) {
-        echo '<span class="text-gray-500">' . __('404 Not Found', 'modern-theme') . '</span>';
+        echo '<span class="text-gray-500">' . __('404 Not Found', 'woomagone-theme') . '</span>';
     }
 
     echo '</nav>';
@@ -201,7 +201,7 @@ add_action('after_setup_theme', 'woomag_theme_one_image_sizes');
 function woomag_theme_one_customize_register($wp_customize) {
     // Header Image Section
     $wp_customize->add_section('header_image_section', array(
-        'title'    => __('Header Image', 'modern-theme'),
+        'title'    => __('Header Image', 'woomagone-theme'),
         'priority' => 30,
     ));
 
@@ -211,7 +211,7 @@ function woomag_theme_one_customize_register($wp_customize) {
     ));
 
     $wp_customize->add_control(new WP_Customize_Image_Control($wp_customize, 'header_image_control', array(
-        'label'    => __('Upload Header Image', 'modern-theme'),
+        'label'    => __('Upload Header Image', 'woomagone-theme'),
         'section'  => 'header_image_section',
         'settings' => 'header_image_setting',
     )));
@@ -223,7 +223,7 @@ function woomag_theme_one_customize_register($wp_customize) {
     ));
 
     $wp_customize->add_control(new WP_Customize_Color_Control($wp_customize, 'primary_color_control', array(
-        'label'    => __('Primary Color', 'modern-theme'),
+        'label'    => __('Primary Color', 'woomagone-theme'),
         'section'  => 'colors',
         'settings' => 'primary_color',
     )));
@@ -316,7 +316,7 @@ function woomag_theme_one_force_styles() {
 
     if (file_exists($css_file)) {
         wp_enqueue_style(
-            'modern-theme-tailwind',
+            'woomagone-theme-tailwind',
             get_template_directory_uri() . '/assets/css/style.css',
             array(),
             filemtime($css_file),
@@ -325,7 +325,7 @@ function woomag_theme_one_force_styles() {
     } else {
         // Fallback: try to load from src directly (for development)
         wp_enqueue_style(
-            'modern-theme-tailwind-fallback',
+            'woomagone-theme-tailwind-fallback',
             get_template_directory_uri() . '/src/css/style.css',
             array(),
             time(),

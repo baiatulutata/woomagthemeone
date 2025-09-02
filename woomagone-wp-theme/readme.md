@@ -1,4 +1,4 @@
-# Modern WordPress Theme
+# WooMagOne WordPress Theme
 
 A modern, responsive WordPress theme built with Webpack, Tailwind CSS, and ES6+ JavaScript. Features a clean, minimal design with no sidebar and full Tailwind CSS template support.
 
@@ -23,7 +23,7 @@ A modern, responsive WordPress theme built with Webpack, Tailwind CSS, and ES6+ 
 ## Theme Structure
 
 ```
-modern-wp-theme/
+woomagone-wp-theme/
 ├── src/
 │   ├── css/
 │   │   └── style.css          # Main Tailwind CSS file
@@ -67,7 +67,7 @@ modern-wp-theme/
    ```bash
    cd wp-content/themes/
    # Extract theme files to this directory
-   cd modern-wp-theme
+   cd woomagone-wp-theme
    ```
 
 2. **Install Dependencies**

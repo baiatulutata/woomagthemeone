@@ -13,52 +13,52 @@ function woomag_theme_one_register_block_styles() {
     // Button styles
     register_block_style('core/button', array(
         'name'  => 'outline',
-        'label' => __('Outline', 'modern-theme'),
+        'label' => __('Outline', 'woomagone-theme'),
     ));
 
     register_block_style('core/button', array(
         'name'  => 'gradient',
-        'label' => __('Gradient', 'modern-theme'),
+        'label' => __('Gradient', 'woomagone-theme'),
     ));
 
     // Quote styles
     register_block_style('core/quote', array(
         'name'  => 'modern',
-        'label' => __('Modern', 'modern-theme'),
+        'label' => __('Modern', 'woomagone-theme'),
     ));
 
     // Cover styles
     register_block_style('core/cover', array(
         'name'  => 'rounded',
-        'label' => __('Rounded', 'modern-theme'),
+        'label' => __('Rounded', 'woomagone-theme'),
     ));
 
     // Group styles
     register_block_style('core/group', array(
         'name'  => 'card',
-        'label' => __('Card', 'modern-theme'),
+        'label' => __('Card', 'woomagone-theme'),
     ));
 
     register_block_style('core/group', array(
         'name'  => 'shadow',
-        'label' => __('Shadow', 'modern-theme'),
+        'label' => __('Shadow', 'woomagone-theme'),
     ));
 
     // Image styles
     register_block_style('core/image', array(
         'name'  => 'rounded',
-        'label' => __('Rounded', 'modern-theme'),
+        'label' => __('Rounded', 'woomagone-theme'),
     ));
 
     register_block_style('core/image', array(
         'name'  => 'shadow',
-        'label' => __('Shadow', 'modern-theme'),
+        'label' => __('Shadow', 'woomagone-theme'),
     ));
 
     // Columns styles
     register_block_style('core/columns', array(
         'name'  => 'card-grid',
-        'label' => __('Card Grid', 'modern-theme'),
+        'label' => __('Card Grid', 'woomagone-theme'),
     ));
 }
 add_action('init', 'woomag_theme_one_register_block_styles');
