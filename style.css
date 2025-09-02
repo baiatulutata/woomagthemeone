@@ -1,0 +1,23 @@
+/*
+Theme Name: Woomag WordPress Theme
+Description: A modern, responsive WordPress theme built with Tailwind CSS and Webpack
+Version: 1.0.0
+Author: Ionut Baldazar
+Text Domain: modern-theme
+Requires at least: 5.0
+Tested up to: 6.3
+Requires PHP: 7.4
+License: GPL v2 or later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
+*/
+
+/*
+ * This file is required by WordPress but styles are loaded from assets/css/style.css
+ * Add any critical CSS here that needs to load immediately
+ */
+
+/* Ensure Tailwind loads properly */
+body {
+    margin: 0;
+    padding: 0;
+}

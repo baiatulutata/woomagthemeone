@@ -1,0 +1,113 @@
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+/* WordPress specific styles */
+@layer base {
+    .aligncenter {
+        @apply mx-auto block;
+    }
+
+    .alignleft {
+        @apply float-left mr-4 mb-4;
+    }
+
+    .alignright {
+        @apply float-right ml-4 mb-4;
+    }
+
+    .wp-caption {
+        @apply max-w-full;
+    }
+
+    .wp-caption-text {
+        @apply text-sm text-gray-600 mt-2;
+    }
+
+    .gallery {
+        @apply grid gap-4;
+    }
+
+    .gallery-columns-2 {
+        @apply grid-cols-2;
+    }
+
+    .gallery-columns-3 {
+        @apply grid-cols-3;
+    }
+
+    .gallery-columns-4 {
+        @apply grid-cols-4;
+    }
+}
+
+@layer components {
+    .btn-primary {
+        @apply bg-primary-600 hover:bg-primary-700 text-white font-medium py-2 px-4 rounded-lg transition-colors duration-200;
+    }
+
+    .btn-secondary {
+        @apply bg-gray-200 hover:bg-gray-300 text-gray-800 font-medium py-2 px-4 rounded-lg transition-colors duration-200;
+    }
+
+    .mobile-menu-toggle {
+        @apply md:hidden flex items-center justify-center w-10 h-10 rounded-lg bg-gray-100 hover:bg-gray-200 transition-colors duration-200;
+    }
+
+    .mobile-menu {
+        @apply fixed inset-x-0 top-0 z-50 bg-white shadow-lg border-b transform transition-transform duration-300 ease-in-out;
+    }
+
+    .mobile-menu.hidden {
+        @apply -translate-y-full;
+    }
+
+    .breadcrumb {
+        @apply flex items-center space-x-2 text-sm text-gray-600;
+    }
+
+    .breadcrumb-separator {
+        @apply text-gray-400;
+    }
+
+    .content-area {
+        /* Custom prose styles - fallback if typography plugin not available */
+    }
+
+    .content-area h1 {
+        @apply text-3xl font-bold text-gray-900 mb-6;
+    }
+
+    .content-area h2 {
+        @apply text-2xl font-semibold text-gray-900 mt-8 mb-4;
+    }
+
+    .content-area h3 {
+        @apply text-xl font-semibold text-gray-900 mt-6 mb-3;
+    }
+
+    .content-area p {
+        @apply mb-4 leading-relaxed;
+    }
+
+    .content-area ul,
+    .content-area ol {
+        @apply mb-4 pl-6;
+    }
+
+    .content-area li {
+        @apply mb-2;
+    }
+
+    .content-area blockquote {
+        @apply border-l-4 border-primary-500 pl-4 italic text-gray-700 my-6;
+    }
+
+    .content-area img {
+        @apply max-w-full h-auto rounded-lg;
+    }
+
+    .content-area a {
+        @apply text-primary-600 hover:text-primary-700 underline;
+    }
+}
