@@ -71,7 +71,7 @@
                         'walker'         => new Modern_Walker_Nav_Menu(),
                         'fallback_cb'    => function() {
                             echo '<ul class="nav-menu flex items-center space-x-1">';
-                            echo '<li><a href="' . home_url('/') . '" class="text-gray-700 hover:text-primary-600 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200">' . __('Home', 'woomagone-theme') . '</a></li>';
+                            echo '<li><a href="' . home_url('/') . '" class="text-gray-700 hover:text-primary-600 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200">' . __('Home', 'woomag-theme') . '</a></li>';
                             echo '</ul>';
                         }
                     ));
@@ -79,7 +79,7 @@
                 </nav>
 
                 <!-- Mobile Menu Toggle -->
-                <button id="mobile-menu-toggle" class="mobile-menu-toggle" aria-label="<?php _e('Toggle mobile menu', 'woomagone-theme'); ?>">
+                <button id="mobile-menu-toggle" class="mobile-menu-toggle" aria-label="<?php _e('Toggle mobile menu', 'woomag-theme'); ?>">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
                     </svg>
@@ -91,7 +91,7 @@
         <div id="mobile-menu" class="mobile-menu hidden">
             <div class="px-4 py-4">
                 <div class="flex items-center justify-between mb-6">
-                    <h2 class="text-lg font-semibold text-gray-900"><?php _e('Menu', 'woomagone-theme'); ?></h2>
+                    <h2 class="text-lg font-semibold text-gray-900"><?php _e('Menu', 'woomag-theme'); ?></h2>
                     <button id="mobile-menu-close" class="p-2 rounded-md text-gray-600 hover:text-gray-900 hover:bg-gray-100">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
@@ -110,7 +110,7 @@
                     'fallback_cb'    => function() {
                         echo '<nav class="mobile-nav">';
                         echo '<ul class="mobile-nav-menu space-y-2">';
-                        echo '<li><a href="' . home_url('/') . '"><span class="block px-4 py-3 text-gray-700 hover:bg-gray-100 hover:text-primary-600 rounded-md transition-colors duration-200">' . __('Home', 'woomagone-theme') . '</span></a></li>';
+                        echo '<li><a href="' . home_url('/') . '"><span class="block px-4 py-3 text-gray-700 hover:bg-gray-100 hover:text-primary-600 rounded-md transition-colors duration-200">' . __('Home', 'woomag-theme') . '</span></a></li>';
                         echo '</ul>';
                         echo '</nav>';
                     }

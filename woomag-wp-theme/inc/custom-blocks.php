@@ -18,7 +18,7 @@ function woomag_theme_one_register_blocks() {
         filemtime(get_template_directory() . '/assets/js/blocks/hero-block.js')
     );
 
-    register_block_type('woomagone-theme/hero', array(
+    register_block_type('woomag-theme/hero', array(
         'editor_script' => 'woomagone-hero-block',
         'render_callback' => 'woomag_theme_one_hero_block_render',
     ));
@@ -31,7 +31,7 @@ function woomag_theme_one_register_blocks() {
         filemtime(get_template_directory() . '/assets/js/blocks/testimonial-block.js')
     );
 
-    register_block_type('woomagone-theme/testimonial', array(
+    register_block_type('woomag-theme/testimonial', array(
         'editor_script' => 'woomagone-testimonial-block',
         'render_callback' => 'woomag_theme_one_testimonial_block_render',
     ));
@@ -44,7 +44,7 @@ function woomag_theme_one_register_blocks() {
         filemtime(get_template_directory() . '/assets/js/blocks/features-block.js')
     );
 
-    register_block_type('woomagone-theme/features', array(
+    register_block_type('woomag-theme/features', array(
         'editor_script' => 'woomagone-features-block',
         'render_callback' => 'woomag_theme_one_features_block_render',
     ));
@@ -140,8 +140,8 @@ function woomag_theme_one_block_categories($categories) {
         $categories,
         array(
             array(
-                'slug'  => 'woomagone-theme',
-                'title' => __('Modern Theme', 'woomagone-theme'),
+                'slug'  => 'woomag-theme',
+                'title' => __('Modern Theme', 'woomag-theme'),
             ),
         )
     );

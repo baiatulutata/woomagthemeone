@@ -21,7 +21,7 @@
                         <?php the_content(); ?>
 
                         <?php wp_link_pages(array(
-                            'before' => '<div class="page-links mt-8 pt-8 border-t border-gray-200"><span class="page-links-title font-medium text-gray-700">' . __('Pages:', 'woomagone-theme') . '</span>',
+                            'before' => '<div class="page-links mt-8 pt-8 border-t border-gray-200"><span class="page-links-title font-medium text-gray-700">' . __('Pages:', 'woomag-theme') . '</span>',
                             'after'  => '</div>',
                             'link_before' => '<span class="inline-block px-4 py-2 ml-2 bg-gray-100 rounded-lg hover:bg-primary-600 hover:text-white transition-colors duration-200">',
                             'link_after'  => '</span>',
@@ -34,7 +34,7 @@
                             edit_post_link(
                                 sprintf(
                                     wp_kses(
-                                        __('Edit <span class="screen-reader-text">%s</span>', 'woomagone-theme'),
+                                        __('Edit <span class="screen-reader-text">%s</span>', 'woomag-theme'),
                                         array(
                                             'span' => array(
                                                 'class' => array(),

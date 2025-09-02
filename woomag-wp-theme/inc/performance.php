@@ -110,7 +110,7 @@ add_action('init', 'woomag_theme_one_cleanup');
 // Defer non-critical JavaScript
 function woomag_theme_one_defer_scripts($tag, $handle, $src) {
     // Don't defer these critical scripts
-    $critical_scripts = array('jquery', 'woomagone-theme-script');
+    $critical_scripts = array('jquery', 'woomag-theme-script');
 
     if (in_array($handle, $critical_scripts)) {
         return $tag;

@@ -13,52 +13,52 @@ function woomag_theme_one_register_block_styles() {
     // Button styles
     register_block_style('core/button', array(
         'name'  => 'outline',
-        'label' => __('Outline', 'woomagone-theme'),
+        'label' => __('Outline', 'woomag-theme'),
     ));
 
     register_block_style('core/button', array(
         'name'  => 'gradient',
-        'label' => __('Gradient', 'woomagone-theme'),
+        'label' => __('Gradient', 'woomag-theme'),
     ));
 
     // Quote styles
     register_block_style('core/quote', array(
         'name'  => 'modern',
-        'label' => __('Modern', 'woomagone-theme'),
+        'label' => __('Modern', 'woomag-theme'),
     ));
 
     // Cover styles
     register_block_style('core/cover', array(
         'name'  => 'rounded',
-        'label' => __('Rounded', 'woomagone-theme'),
+        'label' => __('Rounded', 'woomag-theme'),
     ));
 
     // Group styles
     register_block_style('core/group', array(
         'name'  => 'card',
-        'label' => __('Card', 'woomagone-theme'),
+        'label' => __('Card', 'woomag-theme'),
     ));
 
     register_block_style('core/group', array(
         'name'  => 'shadow',
-        'label' => __('Shadow', 'woomagone-theme'),
+        'label' => __('Shadow', 'woomag-theme'),
     ));
 
     // Image styles
     register_block_style('core/image', array(
         'name'  => 'rounded',
-        'label' => __('Rounded', 'woomagone-theme'),
+        'label' => __('Rounded', 'woomag-theme'),
     ));
 
     register_block_style('core/image', array(
         'name'  => 'shadow',
-        'label' => __('Shadow', 'woomagone-theme'),
+        'label' => __('Shadow', 'woomag-theme'),
     ));
 
     // Columns styles
     register_block_style('core/columns', array(
         'name'  => 'card-grid',
-        'label' => __('Card Grid', 'woomagone-theme'),
+        'label' => __('Card Grid', 'woomag-theme'),
     ));
 }
 add_action('init', 'woomag_theme_one_register_block_styles');
