@@ -1,7 +1,7 @@
 <?php get_header(); ?>
 
     <main class="main-content">
-        <?php woomag_theme_one_breadcrumb(); ?>
+        <?php woomag_theme_breadcrumb(); ?>
 
         <div class="container mx-auto px-4 py-8">
             <?php while (have_posts()) : the_post(); ?>

@@ -9,13 +9,13 @@ if (!defined('ABSPATH')) {
 }
 
 // Skip to content link
-function woomag_theme_one_skip_link() {
+function woomag_theme_skip_link() {
     echo '<a class="skip-link screen-reader-text sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 bg-primary-600 text-white px-4 py-2 rounded z-50" href="#main">' . __('Skip to content', 'woomag-theme') . '</a>';
 }
-add_action('wp_body_open', 'woomag_theme_one_skip_link');
+add_action('wp_body_open', 'woomag_theme_skip_link');
 
 // Add ARIA landmarks
-function woomag_theme_one_aria_landmarks() {
+function woomag_theme_aria_landmarks() {
     ?>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
@@ -58,10 +58,10 @@ function woomag_theme_one_aria_landmarks() {
     </script>
     <?php
 }
-add_action('wp_footer', 'woomag_theme_one_aria_landmarks');
+add_action('wp_footer', 'woomag_theme_aria_landmarks');
 
 // Accessibility customizer options
-function woomag_theme_one_accessibility_customizer($wp_customize) {
+function woomag_theme_accessibility_customizer($wp_customize) {
     // Accessibility Section
     $wp_customize->add_section('accessibility_section', array(
         'title'    => __('Accessibility', 'woomag-theme'),
@@ -105,10 +105,10 @@ function woomag_theme_one_accessibility_customizer($wp_customize) {
         'description' => __('Reduce animations for users who prefer reduced motion', 'woomag-theme'),
     ));
 }
-add_action('customize_register', 'woomag_theme_one_accessibility_customizer');
+add_action('customize_register', 'woomag_theme_accessibility_customizer');
 
 // Add accessibility CSS
-function woomag_theme_one_accessibility_css() {
+function woomag_theme_accessibility_css() {
     ?>
     <style id="accessibility-styles">
         /* Screen reader text */
@@ -225,10 +225,10 @@ function woomag_theme_one_accessibility_css() {
     </style>
     <?php
 }
-add_action('wp_head', 'woomag_theme_one_accessibility_css');
+add_action('wp_head', 'woomag_theme_accessibility_css');
 
 // Add accessibility toolbar
-function woomag_theme_one_accessibility_toolbar() {
+function woomag_theme_accessibility_toolbar() {
     ?>
     <div id="accessibility-toolbar" class="accessibility-toolbar fixed top-0 right-0 z-50 bg-white dark:bg-gray-800 shadow-lg rounded-bl-lg p-2 transform translate-x-full transition-transform duration-300">
         <button id="accessibility-toggle" class="accessibility-toggle p-2 bg-primary-600 text-white rounded-lg mb-2" aria-label="<?php esc_attr_e('Toggle accessibility options', 'woomag-theme'); ?>">
@@ -330,5 +330,5 @@ function woomag_theme_one_accessibility_toolbar() {
     </script>
     <?php
 }
-add_action('wp_footer', 'woomag_theme_one_accessibility_toolbar');
+add_action('wp_footer', 'woomag_theme_accessibility_toolbar');
 ?>

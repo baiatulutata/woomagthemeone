@@ -350,57 +350,121 @@ registerBlockType('woomag-theme/slider', {
                 )
             ),
 
-            wp.element.createElement('div', { className: 'woomag-slider-editor bg-gray-900 rounded-lg overflow-hidden', style: { minHeight: '200px' } },
-                slides.map((slide, i) =>
-                    wp.element.createElement('div', { key: i, className: `p-6 text-white ${i === activeSlide ? 'block' : 'hidden'}`, style: { backgroundImage: slide.image ? `url(${slide.image})` : 'none', backgroundSize: 'cover', backgroundPosition: 'center' } },
-                        wp.element.createElement('div', { style: { backgroundColor: `rgba(0,0,0,${slide.overlayOpacity / 100})`, padding: '20px', borderRadius: '8px' } },
-                            wp.element.createElement('h4', { className: 'text-lg font-bold mb-2' }, slide.title),
-                            wp.element.createElement('p', { className: 'mb-2' }, slide.subtitle),
-                            wp.element.createElement('p', { className: 'mb-4' }, slide.content),
-                            slide.buttonText && wp.element.createElement('a', { href: slide.buttonUrl, className: 'inline-block px-4 py-2 bg-blue-600 rounded text-white' }, slide.buttonText)
+            // Editor Preview
+            wp.element.createElement('div', {
+                    className: 'woomag-slider-editor bg-gray-900 rounded-lg overflow-hidden',
+                    style: { minHeight: '400px' }
+                },
+                wp.element.createElement('div', { className: 'relative h-full' },
+                    // Slide Preview
+                    slides.length > 0 && wp.element.createElement('div', {
+                            className: 'relative h-full min-h-96 flex items-center justify-center',
+                            style: {
+                                backgroundImage: slides[activeSlide]?.image
+                                    ? `linear-gradient(rgba(0,0,0,${(slides[activeSlide].overlayOpacity || 50) / 100}), rgba(0,0,0,${(slides[activeSlide].overlayOpacity || 50) / 100})), url(${slides[activeSlide].image})`
+                                    : 'linear-gradient(135deg, #3b82f6 0%, #6366f1 100%)',
+                                backgroundSize: 'cover',
+                                backgroundPosition: 'center'
+                            }
+                        },
+                        wp.element.createElement('div', { className: 'text-center text-white px-6 max-w-4xl' },
+                            slides[activeSlide]?.subtitle && wp.element.createElement('p', {
+                                className: 'text-sm font-medium opacity-80 mb-4 uppercase tracking-wider'
+                            }, slides[activeSlide].subtitle),
+
+                            slides[activeSlide]?.title && wp.element.createElement('h2', {
+                                className: 'text-4xl md:text-5xl font-bold mb-6 leading-tight'
+                            }, slides[activeSlide].title),
+
+                            slides[activeSlide]?.content && wp.element.createElement('p', {
+                                className: 'text-lg opacity-90 mb-8 max-w-2xl mx-auto'
+                            }, slides[activeSlide].content),
+
+                            slides[activeSlide]?.buttonText && wp.element.createElement('button', {
+                                className: 'bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 px-6 rounded-lg transition-colors'
+                            }, slides[activeSlide].buttonText)
                         )
+                    ),
+
+                    // Navigation Preview
+                    navigation && wp.element.createElement(Fragment, null,
+                        wp.element.createElement('button', {
+                            className: 'absolute left-4 top-1/2 transform -translate-y-1/2 w-10 h-10 bg-black/20 text-white rounded-full flex items-center justify-center hover:bg-blue-600/80 transition-colors',
+                            onClick: () => setActiveSlide(activeSlide > 0 ? activeSlide - 1 : slides.length - 1)
+                        }, '‹'),
+                        wp.element.createElement('button', {
+                            className: 'absolute right-4 top-1/2 transform -translate-y-1/2 w-10 h-10 bg-black/20 text-white rounded-full flex items-center justify-center hover:bg-blue-600/80 transition-colors',
+                            onClick: () => setActiveSlide(activeSlide < slides.length - 1 ? activeSlide + 1 : 0)
+                        }, '›')
+                    ),
+
+                    // Pagination Preview
+                    pagination && wp.element.createElement('div', {
+                            className: 'absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2'
+                        },
+                        slides.map((_, index) =>
+                            wp.element.createElement('button', {
+                                key: index,
+                                className: `w-3 h-3 rounded-full transition-colors ${
+                                    index === activeSlide ? 'bg-blue-500' : 'bg-white/50'
+                                }`,
+                                onClick: () => setActiveSlide(index)
+                            })
+                        )
+                    ),
+
+                    // Settings Overlay
+                    wp.element.createElement('div', {
+                        className: 'absolute top-4 left-4 bg-black/50 text-white text-xs px-3 py-2 rounded-full'
+                    }, `${effect} • ${slidesPerView} per view • ${autoplay ? 'Auto' : 'Manual'}`)
+                )
+            ),
+
+            // Quick Settings
+            wp.element.createElement('div', {
+                    className: 'mt-4 p-4 bg-gray-50 rounded-lg border-2 border-dashed border-gray-300'
+                },
+                wp.element.createElement('h4', { className: 'text-sm font-medium mb-3' }, 'Quick Settings'),
+                wp.element.createElement('div', { className: 'grid grid-cols-2 md:grid-cols-4 gap-3' },
+                    wp.element.createElement('label', { className: 'flex items-center space-x-2 text-sm' },
+                        wp.element.createElement('input', {
+                            type: 'checkbox',
+                            checked: autoplay,
+                            onChange: (e) => setAttributes({ autoplay: e.target.checked })
+                        }),
+                        wp.element.createElement('span', null, 'Autoplay')
+                    ),
+                    wp.element.createElement('label', { className: 'flex items-center space-x-2 text-sm' },
+                        wp.element.createElement('input', {
+                            type: 'checkbox',
+                            checked: loop,
+                            onChange: (e) => setAttributes({ loop: e.target.checked })
+                        }),
+                        wp.element.createElement('span', null, 'Loop')
+                    ),
+                    wp.element.createElement('label', { className: 'flex items-center space-x-2 text-sm' },
+                        wp.element.createElement('input', {
+                            type: 'checkbox',
+                            checked: navigation,
+                            onChange: (e) => setAttributes({ navigation: e.target.checked })
+                        }),
+                        wp.element.createElement('span', null, 'Navigation')
+                    ),
+                    wp.element.createElement('label', { className: 'flex items-center space-x-2 text-sm' },
+                        wp.element.createElement('input', {
+                            type: 'checkbox',
+                            checked: pagination,
+                            onChange: (e) => setAttributes({ pagination: e.target.checked })
+                        }),
+                        wp.element.createElement('span', null, 'Pagination')
                     )
                 )
             )
         ];
     },
 
-
-    save: function (props) {
-        const { attributes } = props;
-        const { slides, effect, autoplay, autoplayDelay, loop, navigation, pagination, slidesPerView, spaceBetween, centeredSlides, height } = attributes;
-
-
-        return (
-            wp.element.createElement('div', {
-                    className: `swiper-container woomag-slider ${height}`,
-                    'data-effect': effect,
-                    'data-autoplay': autoplay,
-                    'data-autoplay-delay': autoplayDelay,
-                    'data-loop': loop,
-                    'data-navigation': navigation,
-                    'data-pagination': pagination,
-                    'data-slides-per-view': slidesPerView,
-                    'data-space-between': spaceBetween,
-                    'data-centered-slides': centeredSlides
-                },
-                wp.element.createElement('div', { className: 'swiper-wrapper' },
-                    slides.map((slide, i) =>
-                        wp.element.createElement('div', { key: i, className: 'swiper-slide', style: { backgroundImage: slide.image ? `url(${slide.image})` : 'none' } },
-                            wp.element.createElement('div', { className: 'slide-overlay', style: { backgroundColor: `rgba(0,0,0,${slide.overlayOpacity / 100})` } }),
-                            wp.element.createElement('div', { className: 'slide-content' },
-                                wp.element.createElement('h4', null, slide.title),
-                                wp.element.createElement('p', null, slide.subtitle),
-                                wp.element.createElement('p', null, slide.content),
-                                slide.buttonText && wp.element.createElement('a', { href: slide.buttonUrl, className: 'slide-button' }, slide.buttonText)
-                            )
-                        )
-                    )
-                ),
-                navigation && wp.element.createElement('div', { className: 'swiper-button-next' }),
-                navigation && wp.element.createElement('div', { className: 'swiper-button-prev' }),
-                pagination && wp.element.createElement('div', { className: 'swiper-pagination' })
-            )
-        );
+    save: function() {
+        // Server-side rendering
+        return null;
     }
 });

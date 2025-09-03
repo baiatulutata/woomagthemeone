@@ -44,7 +44,7 @@ if (post_password_required()) {
                     'style'       => 'ol',
                     'short_ping'  => true,
                     'avatar_size' => 60,
-                    'callback'    => 'woomag_theme_one_comment_callback',
+                    'callback'    => 'woomag_theme_comment_callback',
                 ));
                 ?>
             </ol>
@@ -85,8 +85,8 @@ if (post_password_required()) {
 
 <?php
 // Custom comment callback function
-if (!function_exists('woomag_theme_one_comment_callback')) {
-    function woomag_theme_one_comment_callback($comment, $args, $depth) {
+if (!function_exists('woomag_theme_comment_callback')) {
+    function woomag_theme_comment_callback($comment, $args, $depth) {
         $tag = ($args['style'] === 'div') ? 'div' : 'li';
         ?>
         <<?php echo $tag; ?> id="comment-<?php comment_ID(); ?>" <?php comment_class('comment bg-white p-6 rounded-lg shadow-sm border border-gray-200'); ?>>

@@ -9,7 +9,7 @@ if (!defined('ABSPATH')) {
 }
 
 // Enable WebP support
-function woomag_theme_one_webp_support() {
+function woomag_theme_webp_support() {
     add_filter('wp_check_filetype_and_ext', function($data, $file, $filename, $mimes) {
         $filetype = wp_check_filetype($filename, $mimes);
         return [
@@ -19,17 +19,17 @@ function woomag_theme_one_webp_support() {
         ];
     }, 10, 4);
 }
-add_action('init', 'woomag_theme_one_webp_support');
+add_action('init', 'woomag_theme_webp_support');
 
 // Add WebP MIME type
-function woomag_theme_one_webp_mime($mimes) {
+function woomag_theme_webp_mime($mimes) {
     $mimes['webp'] = 'image/webp';
     return $mimes;
 }
-add_filter('upload_mimes', 'woomag_theme_one_webp_mime');
+add_filter('upload_mimes', 'woomag_theme_webp_mime');
 
 // Lazy load images
-function woomag_theme_one_lazy_load_images($content) {
+function woomag_theme_lazy_load_images($content) {
     if (!is_admin() && !is_feed()) {
         $content = preg_replace_callback(
             '/<img([^>]+?)src=[\'"]?([^\'"\s>]+)[\'"]?([^>]*)>/i',
@@ -61,10 +61,10 @@ function woomag_theme_one_lazy_load_images($content) {
     }
     return $content;
 }
-add_filter('the_content', 'woomag_theme_one_lazy_load_images');
+add_filter('the_content', 'woomag_theme_lazy_load_images');
 
 // Preload critical resources
-function woomag_theme_one_preload_resources() {
+function woomag_theme_preload_resources() {
     // Preload main font
     echo '<link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" as="style" onload="this.onload=null;this.rel=\'stylesheet\'">';
     echo '<noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"></noscript>';
@@ -73,10 +73,10 @@ function woomag_theme_one_preload_resources() {
     $css_file = get_template_directory_uri() . '/assets/css/style.css';
     echo '<link rel="preload" href="' . esc_url($css_file) . '" as="style">';
 }
-add_action('wp_head', 'woomag_theme_one_preload_resources', 1);
+add_action('wp_head', 'woomag_theme_preload_resources', 1);
 
 // Optimize CSS delivery
-function woomag_theme_one_optimize_css() {
+function woomag_theme_optimize_css() {
     // Add critical CSS inline
     $critical_css = get_template_directory() . '/assets/css/critical.css';
     if (file_exists($critical_css)) {
@@ -85,10 +85,10 @@ function woomag_theme_one_optimize_css() {
         echo '</style>';
     }
 }
-add_action('wp_head', 'woomag_theme_one_optimize_css', 2);
+add_action('wp_head', 'woomag_theme_optimize_css', 2);
 
 // Remove unnecessary WordPress features
-function woomag_theme_one_cleanup() {
+function woomag_theme_cleanup() {
     // Remove emoji scripts
     remove_action('wp_head', 'print_emoji_detection_script', 7);
     remove_action('admin_print_scripts', 'print_emoji_detection_script');
@@ -105,10 +105,10 @@ function woomag_theme_one_cleanup() {
     // Remove Windows Live Writer manifest link
     remove_action('wp_head', 'wlwmanifest_link');
 }
-add_action('init', 'woomag_theme_one_cleanup');
+add_action('init', 'woomag_theme_cleanup');
 
 // Defer non-critical JavaScript
-function woomag_theme_one_defer_scripts($tag, $handle, $src) {
+function woomag_theme_defer_scripts($tag, $handle, $src) {
     // Don't defer these critical scripts
     $critical_scripts = array('jquery', 'woomag-theme-script');
 
@@ -119,36 +119,36 @@ function woomag_theme_one_defer_scripts($tag, $handle, $src) {
     // Add defer attribute to non-critical scripts
     return str_replace('<script ', '<script defer ', $tag);
 }
-add_filter('script_loader_tag', 'woomag_theme_one_defer_scripts', 10, 3);
+add_filter('script_loader_tag', 'woomag_theme_defer_scripts', 10, 3);
 
 // Add DNS prefetch for external resources
-function woomag_theme_one_dns_prefetch() {
+function woomag_theme_dns_prefetch() {
     echo '<link rel="dns-prefetch" href="//fonts.googleapis.com">';
     echo '<link rel="dns-prefetch" href="//fonts.gstatic.com">';
 }
-add_action('wp_head', 'woomag_theme_one_dns_prefetch', 0);
+add_action('wp_head', 'woomag_theme_dns_prefetch', 0);
 
 // Cache busting for development
-function woomag_theme_one_cache_busting($src, $handle) {
+function woomag_theme_cache_busting($src, $handle) {
     if (WP_DEBUG && (strpos($src, get_template_directory_uri()) !== false)) {
         $src = add_query_arg('v', time(), $src);
     }
     return $src;
 }
-add_filter('style_loader_src', 'woomag_theme_one_cache_busting', 10, 2);
-add_filter('script_loader_src', 'woomag_theme_one_cache_busting', 10, 2);
+add_filter('style_loader_src', 'woomag_theme_cache_busting', 10, 2);
+add_filter('script_loader_src', 'woomag_theme_cache_busting', 10, 2);
 
 // Optimize database queries
-function woomag_theme_one_optimize_queries() {
+function woomag_theme_optimize_queries() {
     // Remove unnecessary meta queries on frontend
     if (!is_admin()) {
         remove_action('wp_head', 'adjacent_posts_rel_link_wp_head', 10, 0);
     }
 }
-add_action('init', 'woomag_theme_one_optimize_queries');
+add_action('init', 'woomag_theme_optimize_queries');
 
 // Add schema.org structured data
-function woomag_theme_one_structured_data() {
+function woomag_theme_structured_data() {
     if (is_singular('post')) {
         global $post;
         $schema = array(
@@ -178,5 +178,5 @@ function woomag_theme_one_structured_data() {
         echo '<script type="application/ld+json">' . json_encode($schema) . '</script>';
     }
 }
-add_action('wp_head', 'woomag_theme_one_structured_data');
+add_action('wp_head', 'woomag_theme_structured_data');
 ?>

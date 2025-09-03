@@ -9,7 +9,8 @@ if (!defined('ABSPATH')) {
 }
 
 // Register Swiper Slider Block
-function woomag_theme_one_register_slider_block() {
+function woomag_theme_register_slider_block() {
+
     // Enqueue Swiper CSS and JS
     wp_register_style(
         'swiper-css',
@@ -28,14 +29,14 @@ function woomag_theme_one_register_slider_block() {
 
     wp_register_script(
         'woomag-slider-block',
-        get_template_directory_uri() . '/assets/js/blocks/slider-block.js',
+        get_template_directory_uri() . '/assets/js/blocks.js',
         array('wp-blocks', 'wp-element', 'wp-editor', 'wp-components'),
-        filemtime(get_template_directory() . '/assets/js/blocks/slider-block.js')
+        filemtime(get_template_directory() . '/assets/js/blocks.js')
     );
 
     register_block_type('woomag-theme/slider', array(
         'editor_script' => 'woomag-slider-block',
-        'render_callback' => 'woomag_theme_one_slider_render',
+        'render_callback' => 'woomag_theme_slider_render',
         'attributes' => array(
             'sliderType' => array(
                 'type' => 'string',
@@ -88,10 +89,11 @@ function woomag_theme_one_register_slider_block() {
         )
     ));
 }
-add_action('init', 'woomag_theme_one_register_slider_block');
+add_action('init', 'woomag_theme_register_slider_block');
 
 // Swiper Slider Block Render
-function woomag_theme_one_slider_render($attributes) {
+function woomag_theme_slider_render($attributes) {
+
     // Enqueue Swiper assets on frontend
     wp_enqueue_style('swiper-css');
     wp_enqueue_script('swiper-js');

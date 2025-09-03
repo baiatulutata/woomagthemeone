@@ -68,7 +68,7 @@
                         'menu_id'        => 'primary-menu',
                         'container'      => false,
                         'menu_class'     => 'nav-menu flex items-center space-x-1',
-                        'walker'         => new Modern_Walker_Nav_Menu(),
+                        'walker'         => new WoomagOne_Walker_Nav_Menu(),
                         'fallback_cb'    => function() {
                             echo '<ul class="nav-menu flex items-center space-x-1">';
                             echo '<li><a href="' . home_url('/') . '" class="text-gray-700 hover:text-primary-600 px-3 py-2 rounded-md text-sm font-medium transition-colors duration-200">' . __('Home', 'woomag-theme') . '</a></li>';

@@ -9,7 +9,7 @@ if (!defined('ABSPATH')) {
 }
 
 // Add dark mode customizer controls
-function woomag_theme_one_dark_mode_customizer($wp_customize) {
+function woomag_theme_dark_mode_customizer($wp_customize) {
     // Dark Mode Section
     $wp_customize->add_section('dark_mode_section', array(
         'title'    => __('Dark Mode', 'woomag-theme'),
@@ -62,10 +62,10 @@ function woomag_theme_one_dark_mode_customizer($wp_customize) {
         'section' => 'dark_mode_section',
     )));
 }
-add_action('customize_register', 'woomag_theme_one_dark_mode_customizer');
+add_action('customize_register', 'woomag_theme_dark_mode_customizer');
 
 // Add dark mode toggle to header
-function woomag_theme_one_dark_mode_toggle() {
+function woomag_theme_dark_mode_toggle() {
     if (get_theme_mod('enable_dark_mode', false)) {
         ?>
         <button id="dark-mode-toggle" class="dark-mode-toggle p-2 rounded-lg text-gray-600 hover:text-gray-900 dark:text-gray-300 dark:hover:text-white transition-colors duration-200" aria-label="<?php esc_attr_e('Toggle dark mode', 'woomag-theme'); ?>">
@@ -81,7 +81,7 @@ function woomag_theme_one_dark_mode_toggle() {
 }
 
 // Add dark mode CSS variables
-function woomag_theme_one_dark_mode_css() {
+function woomag_theme_dark_mode_css() {
     if (get_theme_mod('enable_dark_mode', false)) {
         $dark_bg = get_theme_mod('dark_bg_color', '#1a1a1a');
         $dark_text = get_theme_mod('dark_text_color', '#ffffff');
@@ -216,18 +216,18 @@ function woomag_theme_one_dark_mode_css() {
         <?php
     }
 }
-add_action('wp_head', 'woomag_theme_one_dark_mode_css');
+add_action('wp_head', 'woomag_theme_dark_mode_css');
 
 // Add dark mode toggle to navigation
-function woomag_theme_one_add_dark_mode_to_nav($items, $args) {
+function woomag_theme_add_dark_mode_to_nav($items, $args) {
     if ($args->theme_location == 'primary' && get_theme_mod('enable_dark_mode', false)) {
         $items .= '<li class="menu-item dark-mode-toggle-item">';
         ob_start();
-        woomag_theme_one_dark_mode_toggle();
+        woomag_theme_dark_mode_toggle();
         $items .= ob_get_clean();
         $items .= '</li>';
     }
     return $items;
 }
-add_filter('wp_nav_menu_items', 'woomag_theme_one_add_dark_mode_to_nav', 10, 2);
+add_filter('wp_nav_menu_items', 'woomag_theme_add_dark_mode_to_nav', 10, 2);
 ?>

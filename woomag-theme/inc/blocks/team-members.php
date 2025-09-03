@@ -9,17 +9,12 @@ if (!defined('ABSPATH')) {
 }
 
 // Register Team Members Block
-function woomag_theme_one_register_team_members_block() {
-    wp_register_script(
-        'woomag-team-members-block',
-        get_template_directory_uri() . '/assets/js/blocks/team-members-block.js',
-        array('wp-blocks', 'wp-element', 'wp-editor', 'wp-components'),
-        filemtime(get_template_directory() . '/assets/js/blocks/team-members-block.js')
-    );
+function woomag_theme_register_team_members_block() {
+
 
     register_block_type('woomag-theme/team-members', array(
         'editor_script' => 'woomag-team-members-block',
-        'render_callback' => 'woomag_theme_one_team_members_render',
+        'render_callback' => 'woomag_theme_team_members_render',
         'attributes' => array(
             'title' => array(
                 'type' => 'string',
@@ -52,10 +47,11 @@ function woomag_theme_one_register_team_members_block() {
         )
     ));
 }
-add_action('init', 'woomag_theme_one_register_team_members_block');
+add_action('init', 'woomag_theme_register_team_members_block');
+
 
 // Team Members Block Render
-function woomag_theme_one_team_members_render($attributes) {
+function woomag_theme_team_members_render($attributes) {
     $title = isset($attributes['title']) ? $attributes['title'] : 'Our Amazing Team';
     $subtitle = isset($attributes['subtitle']) ? $attributes['subtitle'] : 'Meet the talented people behind our success';
     $layout = isset($attributes['layout']) ? $attributes['layout'] : 'grid';

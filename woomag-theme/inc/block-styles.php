@@ -9,7 +9,7 @@ if (!defined('ABSPATH')) {
 }
 
 // Register custom block styles
-function woomag_theme_one_register_block_styles() {
+function woomag_theme_register_block_styles() {
     // Button styles
     register_block_style('core/button', array(
         'name'  => 'outline',
@@ -124,10 +124,10 @@ function woomag_theme_one_register_block_styles() {
         'label' => __('No Bullets', 'woomag-theme'),
     ));
 }
-add_action('init', 'woomag_theme_one_register_block_styles');
+add_action('init', 'woomag_theme_register_block_styles');
 
 // Add CSS for custom block styles
-function woomag_theme_one_block_styles_css() {
+function woomag_theme_block_styles_css() {
     ?>
     <style id="woomag-block-styles">
         /* Button Styles */
@@ -292,10 +292,10 @@ function woomag_theme_one_block_styles_css() {
     </style>
     <?php
 }
-add_action('wp_head', 'woomag_theme_one_block_styles_css');
+add_action('wp_head', 'woomag_theme_block_styles_css');
 
 // Enqueue block editor styles
-function woomag_theme_one_block_editor_styles() {
+function woomag_theme_block_editor_styles() {
     wp_enqueue_style(
         'woomag-block-editor-styles',
         get_template_directory_uri() . '/assets/css/block-editor.css',
@@ -303,5 +303,5 @@ function woomag_theme_one_block_editor_styles() {
         wp_get_theme()->get('Version')
     );
 }
-add_action('enqueue_block_editor_assets', 'woomag_theme_one_block_editor_styles');
+add_action('enqueue_block_editor_assets', 'woomag_theme_block_editor_styles');
 ?>

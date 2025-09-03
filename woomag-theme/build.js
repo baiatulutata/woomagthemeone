@@ -4,7 +4,7 @@ const { execSync } = require('child_process');
 const fs = require('fs');
 const path = require('path');
 
-console.log('🚀 Building Modern WordPress Theme...\n');
+console.log('🚀 Building WoomagOne Theme...\n');
 
 // Ensure directories exist
 const assetsDir = path.join(__dirname, 'assets');

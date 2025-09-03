@@ -1,3 +1,4 @@
+
 // Mobile menu functionality
 document.addEventListener('DOMContentLoaded', function() {
     const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
