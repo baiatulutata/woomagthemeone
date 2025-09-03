@@ -12,41 +12,54 @@ if (!defined('ABSPATH')) {
 function woomag_theme_one_register_blocks() {
     // Hero Section Block
     wp_register_script(
-        'woomagone-hero-block',
+        'woomag-hero-block',
         get_template_directory_uri() . '/assets/js/blocks/hero-block.js',
         array('wp-blocks', 'wp-element', 'wp-editor'),
         filemtime(get_template_directory() . '/assets/js/blocks/hero-block.js')
     );
 
     register_block_type('woomag-theme/hero', array(
-        'editor_script' => 'woomagone-hero-block',
+        'editor_script' => 'woomag-hero-block',
         'render_callback' => 'woomag_theme_one_hero_block_render',
     ));
 
     // Testimonial Block
     wp_register_script(
-        'woomagone-testimonial-block',
+        'woomag-testimonial-block',
         get_template_directory_uri() . '/assets/js/blocks/testimonial-block.js',
         array('wp-blocks', 'wp-element', 'wp-editor'),
         filemtime(get_template_directory() . '/assets/js/blocks/testimonial-block.js')
     );
 
     register_block_type('woomag-theme/testimonial', array(
-        'editor_script' => 'woomagone-testimonial-block',
+        'editor_script' => 'woomag-testimonial-block',
         'render_callback' => 'woomag_theme_one_testimonial_block_render',
     ));
 
     // Feature Grid Block
     wp_register_script(
-        'woomagone-features-block',
+        'woomag-features-block',
         get_template_directory_uri() . '/assets/js/blocks/features-block.js',
         array('wp-blocks', 'wp-element', 'wp-editor'),
         filemtime(get_template_directory() . '/assets/js/blocks/features-block.js')
     );
 
     register_block_type('woomag-theme/features', array(
-        'editor_script' => 'woomagone-features-block',
+        'editor_script' => 'woomag-features-block',
         'render_callback' => 'woomag_theme_one_features_block_render',
+    ));
+
+    // Team Members Block
+    wp_register_script(
+        'woomag-team-members-block',
+        get_template_directory_uri() . '/assets/js/blocks/team-members-block.js',
+        array('wp-blocks', 'wp-element', 'wp-editor', 'wp-components'),
+        filemtime(get_template_directory() . '/assets/js/blocks/team-members-block.js')
+    );
+
+    register_block_type('woomag-theme/team-members', array(
+        'editor_script' => 'woomag-team-members-block',
+        'render_callback' => 'woomag_theme_one_team_members_block_render',
     ));
 }
 add_action('init', 'woomag_theme_one_register_blocks');
@@ -134,6 +147,13 @@ function woomag_theme_one_features_block_render($attributes) {
     return ob_get_clean();
 }
 
+// Team Members Block Render
+function woomag_theme_one_team_members_block_render($attributes) {
+    // Include the team members block file
+    require_once get_template_directory() . '/inc/blocks/team-members.php';
+    return woomag_theme_one_team_members_render($attributes);
+}
+
 // Block category
 function woomag_theme_one_block_categories($categories) {
     return array_merge(
@@ -141,7 +161,8 @@ function woomag_theme_one_block_categories($categories) {
         array(
             array(
                 'slug'  => 'woomag-theme',
-                'title' => __('Modern Theme', 'woomag-theme'),
+                'title' => __('WoomagOne', 'woomag-theme'),
+                'icon'  => 'star-filled',
             ),
         )
     );
