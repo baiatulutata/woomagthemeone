@@ -46,7 +46,11 @@ function woomag_theme_one_register_blocks() {
         'editor_script' => 'woomag-slider-block',
         'render_callback' => 'woomag_theme_slider_render',
     ));
-    register_block_type('woomag-pricing-tables-block', array(
+    register_block_type('woomag-theme/accordion', array(
+        'editor_script' => 'woomag-accordion-block',
+        'render_callback' => 'woomag_theme_one_accordion_render',
+    ));
+    register_block_type('woomag-theme/pricing-tables', array(
         'editor_script' => 'woomag-pricing-tables-block',
         'render_callback' => 'woomag_theme_one_pricing_tables_render',
     ));
