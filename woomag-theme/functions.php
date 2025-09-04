@@ -84,6 +84,15 @@ function woomag_theme_one_widgets_init() {
         'before_title'  => '<h3 class="widget-title text-lg font-semibold mb-4">',
         'after_title'   => '</h3>',
     ));
+    register_sidebar(array(
+        'name'          => __('Header Widgets', 'woomag-theme'),
+        'id'            => 'header-widgets',
+        'description'   => __('Add widgets here to appear in your header.', 'woomag-theme'),
+        'before_widget' => '<div id="%1$s" class="widget %2$s mb-8">',
+        'after_widget'  => '</div>',
+        'before_title'  => '<h3 class="widget-title text-lg font-semibold mb-4">',
+        'after_title'   => '</h3>',
+    ));
 }
 add_action('widgets_init', 'woomag_theme_one_widgets_init');
 
@@ -91,7 +100,7 @@ add_action('widgets_init', 'woomag_theme_one_widgets_init');
 class WoomagOne_Walker_Nav_Menu extends Walker_Nav_Menu {
     public function start_lvl(&$output, $depth = 0, $args = null) {
         $indent = str_repeat("\t", $depth);
-        $output .= "\n$indent<ul class=\"sub-menu absolute left-0 mt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 hidden group-hover:block\">\n";
+        $output .= "\n$indent<ul class=\"sub-menu absolute left-0 pt-2 w-56 rounded-md shadow-lg bg-white ring-1 ring-black ring-opacity-5 hidden group-hover:block\">\n";
     }
 
     public function end_lvl(&$output, $depth = 0, $args = null) {
@@ -283,6 +292,8 @@ require_once get_template_directory() . '/inc/block-styles.php';
 require_once get_template_directory() . '/inc/custom-blocks.php';
 require_once get_template_directory() . '/inc/blocks/team-members.php';
 require_once get_template_directory() . '/inc/blocks/slider.php';
+require_once get_template_directory() . '/inc/blocks/pricing-tables.php';
+require_once get_template_directory() . '/inc/blocks/accordion.php';
 //require_once get_template_directory() . '/inc/performance.php';
 require_once get_template_directory() . '/inc/dark-mode.php';
 require_once get_template_directory() . '/inc/accessibility.php';
