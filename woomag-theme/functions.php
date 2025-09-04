@@ -295,6 +295,8 @@ require_once get_template_directory() . '/inc/blocks/slider.php';
 require_once get_template_directory() . '/inc/blocks/pricing-tables.php';
 require_once get_template_directory() . '/inc/blocks/accordion.php';
 //require_once get_template_directory() . '/inc/performance.php';
+require_once get_template_directory() . '/inc/blocks/contact-form.php';
+
 require_once get_template_directory() . '/inc/dark-mode.php';
 require_once get_template_directory() . '/inc/accessibility.php';
 
